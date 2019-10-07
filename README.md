@@ -56,7 +56,17 @@ for (_, usa) in moreStates.enumerated() {
 Print out how many non-whitespace characters are in `myString`:
 
 `let myString = "This is good practice with Strings!"`
+```swift
+// not the right answer, but attempt:
+//need empty string
+let myString = "This is good practice with Strings!"
 
+for char in myString {
+    if myString.contains(" "){
+        print(char)
+    }
+}
+```
 Iterate through the array below. For each sentence, print out how many non-whitespace characters are in it.
 
 `let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]`
@@ -65,6 +75,22 @@ Iterate through the array below. For each sentence, print out how many non-white
 ## Question 5
 
 Iterate through `garden` and place any 🌷 that you find into the `basket`. Replace any 🌷 that you pick up with `"dirt"`. Then print how many 🌷 are in your `basket`.
+```swuft
+attempt:
+var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
+var basket = [String]()
+
+for flower in garden {
+    if flower == "🌷"{
+        for _ in garden {
+            garden.popLast() ?? "🌷"
+            garden.append("dirt")
+            print(garden)
+    }
+    }
+}
+
+```
 
 ```swift
 var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
