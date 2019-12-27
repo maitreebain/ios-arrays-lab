@@ -57,38 +57,55 @@ Print out how many non-whitespace characters are in `myString`:
 
 `let myString = "This is good practice with Strings!"`
 ```swift
-// not the right answer, but attempt:
-//need empty string
 let myString = "This is good practice with Strings!"
+var newStr = ""
 
-for char in myString {
-    if myString.contains(" "){
-        print(char)
+
+for char in myString{
+    if char != " "{
+        newStr.append(char)
     }
 }
+print(newStr)
 ```
 Iterate through the array below. For each sentence, print out how many non-whitespace characters are in it.
 
 `let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]`
 
+```
+let myFavoriteQuotes = ["To be or not to be, that is the question.", "The only source of knowledge is experience.", "Mr. Gorbachev, tear down this wall!", "Four score and twenty years ago..."]
+var nonSpace = " "
+
+
+for message in myFavoriteQuotes {
+    print(message)
+    for char in message{
+        if char != " "{
+            nonSpace.append(char)
+        }
+    }
+}
+print(nonSpace.count)
+
+```
 
 ## Question 5
 
 Iterate through `garden` and place any 🌷 that you find into the `basket`. Replace any 🌷 that you pick up with `"dirt"`. Then print how many 🌷 are in your `basket`.
-```swuft
-attempt:
+```swift
 var garden = ["dirt","🌷","dirt","🌷","dirt","dirt","🌷","dirt","🌷","dirt"]
 var basket = [String]()
 
-for flower in garden {
+for (index, flower) in garden.enumerated(){
     if flower == "🌷"{
-        for _ in garden {
-            garden.popLast() ?? "🌷"
-            garden.append("dirt")
-            print(garden)
-    }
+        basket.append(flower)
+        garden.remove(at: index)
+        garden.insert("dirt", at: index)
     }
 }
+
+print(garden)
+print(basket.count)
 
 ```
 
@@ -107,6 +124,23 @@ The below array represents an unfinished batting lineup for a baseball team. **Y
 - Put "Reyes" to bat 8th instead.
 
 `var battingLineup = ["Reyes", "Jeter", "Ramirez", "Pujols","Griffey","Thomas","Jones", "Rodriguez"]`
+
+```
+battingLineup.append("Suzuki")
+for (index, name) in battingLineup.enumerated(){
+    if name == "Jeter"{
+        battingLineup.remove(at: index)
+        battingLineup.insert("Tejada", at: index)
+    } else if name == "Thomas"{
+        battingLineup.remove(at: index)
+        battingLineup.insert("Guerro", at: index)
+    } else if name == "Reyes" {
+        battingLineup.remove(at: index)
+        battingLineup.insert("Reyes", at: 7)
+    }
+}
+print(battingLineup)
+```
 
 
 ## Question 7
@@ -132,6 +166,16 @@ target = 32
 //true
 ```
 
+```
+let numbers = [4,2,6,73,32,4,2,1]
+
+for item in numbers {
+    if item == 32 {
+        print(true)
+    }
+}
+```
+
 Ex. 2
 
 ```swift
@@ -140,6 +184,17 @@ numbers = [32459,2,4,5,1,4,2,1]
 target = 3
 
 //false
+```
+```
+let numbers = [32459,2,4,5,1,4,2,1]
+
+for item in numbers {
+    if item != 3 {
+        print(true)
+    } else {
+        print(false)
+    }
+}
 ```
 
 
@@ -151,6 +206,15 @@ Find the largest value in an array of Int.  Do not use the built-in `max()` meth
 let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
 
 //This creates an array of 100 numbers in between 0 and 200.  For now, you don't need to worry about how it does that.
+```
+```
+let arrayOfNumbers: [Int] = (1...100).map{ _ in Int.random(in: 0...200)}.map{Int($0)}
+
+for (index, num) in arrayOfNumbers.enumerated() {
+    if num < index + 1 {
+        print(num)
+    }
+}
 ```
 
 
